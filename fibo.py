@@ -1,12 +1,19 @@
-cache = {0: 0, 1: 1}
-x = input()
+import math
 
-def fibonacci_of(n):
-    if n in cache:  # Base case
-        return cache[n]
-    # Compute and cache the Fibonacci number
-    cache[n] = fibonacci_of(n - 1) + fibonacci_of(n - 2)  # Recursive case
-    return cache[n]
 
-for n in range(int(x)):
-    print(fibonacci_of(n))
+n = int(input())
+
+def binets_formula(n):
+
+    """
+    The central function implementing Binet's Formula
+    """
+
+    # pre-calculate sqrt(5) as we use it 3 times
+    sqrt5 = math.sqrt(5)
+
+    F_n = int((( (1 + sqrt5) ** n - (1 - sqrt5) ** n ) / ( 2 ** n * sqrt5 )))
+
+    return F_n
+
+print(binets_formula(n))
